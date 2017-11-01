@@ -11,5 +11,14 @@ fi
 
 mv magento-ee/* . && rm -rf magento-ee
 mkdir -p app/code/Magento
-cd app/code/Magento
-git submodule add git@github.com:magento-mcom/module-sales-message-bus.git SalesMessageBus
+
+git clone git@github.com:magento-mcom/module-aqmp-message-bus.git app/code/Magento/AmqpMessageBus
+git clone git@github.com:magento-mcom/module-catalog-message-bus.git app/code/Magento/CatalogMessageBus
+git clone git@github.com:magento-mcom/module-common-message-bus.git app/code/Magento/CommonMessageBus
+git clone git@github.com:magento-mcom/module-inventory-message-bus.git app/code/Magento/InventoryMessageBus
+git clone git@github.com:magento-mcom/module-mcom-multiple-location-inventory.git app/code/Magento/McomMultipleLocationInventory
+git clone git@github.com:magento-mcom/module-mcom-transactional-emails.git app/code/Magento/McomTransactionalEmails
+git clone git@github.com:magento-mcom/module-message-bus-log.git app/code/Magento/MessageBusLog
+git clone git@github.com:magento-mcom/module-postsales-message-bus.git app/code/Magento/PostsalesMessageBus
+git clone git@github.com:magento-mcom/module-sales-message-bus.git app/code/Magento/SalesMessageBus
+git clone git@github.com:magento-mcom/module-service-bus.git app/code/Magento/ServiceBus
