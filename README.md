@@ -12,12 +12,12 @@ This repository provides a workspace to work on Magento MCOM connector for Magen
 
 ### 1. Fork
 
-Use [Fork](https://github.com/magento-mcom/mcom-connector-sr#fork-destination-box) button in the header to create your own copy of this repository.
+Use [Fork](https://github.com/magento-mcom/mcom-connector#fork-destination-box) button in the header to create your own copy of this repository.
 
 ### 2. Clone
 
 ```
-git clone git@github.com:PUT-YOUR-GITHUB-USERNAME-HERE/mcom-connector-sr && cd mcom-connector-sr
+git clone git@github.com:PUT-YOUR-GITHUB-USERNAME-HERE/mcom-connector && cd mcom-connector-sr
 ```
 
 ### 3. Start services
