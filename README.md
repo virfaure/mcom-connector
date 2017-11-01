@@ -30,26 +30,34 @@ docker-compose up -d
 
 ### 4. Install Magento
 
-First, create an auth.json file with your credentials in order to install Magento EE with composer and run install script
+First, create an auth.json file with your credentials in order to install Magento EE with composer. Your access keys can be found in your Magento Marketplace account -> Access Keys.
 
+To install last version of Magento EE
 ```bash
 ./init.sh 
 ```
-will install latest version of Magento EE
-
+To install specific version of Magento EE
 ```bash
 ./init.sh 2.1.8
 ```
-will install version 2.1.8 of Magento EE
 
-The script will install Magento EE and clone all MCOM Connector modules in the app/code/Magento folder.
+The script will install Magento EE and clone all MCOM Connector modules in the app/code/Magento folder:
+- AmqpMessageBus
+- CatalogMessageBus
+- CommonMessageBus
+- InventoryMessageBus
+- McomMultipleLocationInventory
+- McomTransactionalEmails
+- MessageBusLog
+- PostsalesMessageBus
+- SalesMessageBus
+- Service Bus
 
 Run `bin/magento setup:install` to initalize database and environment configuration. Change `DOCKER_IP` environment variable to point to the IP address where docker is running. 
 
 ```
-export DOCKER_IP=127.0.0.1
 php -d memory_limit=-1 bin/magento setup:install \
-  --amqp-host $DOCKER_IP \
+  --amqp-host 127.0.0.1 \
   --amqp-port 5672 \
   --amqp-user guest \
   --amqp-password guest \
@@ -59,12 +67,12 @@ php -d memory_limit=-1 bin/magento setup:install \
   --admin-firstname John \
   --admin-lastname Doe \
   --admin-email admin@magento.com \
-  --db-host $DOCKER_IP \
+  --db-host 127.0.0.1 \
   --db-name magento \
   --db-user root \
   --db-password magento \
   --session-save db \
-  --base-url http://localhost:8082/ \
+  --base-url http://127.0.0.1:8082/ \
   --backend-frontname admin
 ```
 
