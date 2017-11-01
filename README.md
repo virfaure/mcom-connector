@@ -17,7 +17,7 @@ Use [Fork](https://github.com/magento-mcom/mcom-connector#fork-destination-box) 
 ### 2. Clone
 
 ```
-git clone git@github.com:PUT-YOUR-GITHUB-USERNAME-HERE/mcom-connector && cd mcom-connector-sr
+git clone git@github.com:PUT-YOUR-GITHUB-USERNAME-HERE/mcom-connector && cd mcom-connector
 ```
 
 ### 3. Start services
