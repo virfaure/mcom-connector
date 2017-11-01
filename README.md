@@ -17,7 +17,7 @@ Use [Fork](https://github.com/magento-mcom/mcom-connector#fork-destination-box) 
 ### 2. Clone
 
 ```
-git clone git@github.com:PUT-YOUR-GITHUB-USERNAME-HERE/mcom-connector && cd mcom-connector-sr
+git clone git@github.com:PUT-YOUR-GITHUB-USERNAME-HERE/mcom-connector && cd mcom-connector
 ```
 
 ### 3. Start services
@@ -30,19 +30,28 @@ docker-compose up -d
 
 ### 4. Install Magento
 
-First, create an auth.json file with your credentials in order to install Magento EE with composer and run install script
+First, create an auth.json file with your credentials in order to install Magento EE with composer. Your access keys can be found in your Magento Marketplace account -> Access Keys.
 
+To install last version of Magento EE
 ```bash
 ./init.sh 
 ```
-will install latest version of Magento EE
-
+To install specific version of Magento EE
 ```bash
 ./init.sh 2.1.8
 ```
-will install version 2.1.8 of Magento EE
 
-The script will install Magento EE and clone all MCOM Connector modules in the app/code/Magento folder.
+The script will install Magento EE and clone all MCOM Connector modules in the app/code/Magento folder:
+- AmqpMessageBus
+- CatalogMessageBus
+- CommonMessageBus
+- InventoryMessageBus
+- McomMultipleLocationInventory
+- McomTransactionalEmails
+- MessageBusLog
+- PostsalesMessageBus
+- SalesMessageBus
+- Service Bus
 
 Run `bin/magento setup:install` to initalize database and environment configuration. Change `DOCKER_IP` environment variable to point to the IP address where docker is running. 
 
@@ -64,7 +73,7 @@ php -d memory_limit=-1 bin/magento setup:install \
   --db-user root \
   --db-password magento \
   --session-save db \
-  --base-url http://localhost:8082/ \
+  --base-url http://$DOCKER_IP:8082/ \
   --backend-frontname admin
 ```
 
@@ -121,7 +130,7 @@ php -S 127.0.0.1:8082 -d always_populate_raw_post_data=-1  -t ./pub/ ./phpserver
 
 ## Access website
 
-You local website URL depends on the URL used during installation, by default your magento website will be available at [http://localhost:8082/index.php](http://localhost:8082/index.php).
+You local website URL depends on the URL used during installation, by default your magento website will be available at [http://127.0.0.1:8082/index.php](http://127.0.0.1:8082/index.php).
 
 If the CSS and JS are not loaded correctly, you need to add the following configuration into the database :
 ```
@@ -130,7 +139,7 @@ INSERT INTO core_config_data (`path`, `value`) VALUES ('dev/static/sign', '0');
 
 #### Default Backoffice username and password
 
-- URL: [http://localhost:8082/index.php/admin](http://localhost:8082/index.php/admin)
+- URL: [http://127.0.0.1:8082/index.php/admin](http://127.0.0.1:8082/index.php/admin)
 - Username: admin
 - Password: admin123
 
