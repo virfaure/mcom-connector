@@ -56,8 +56,9 @@ The script will install Magento EE and clone all MCOM Connector modules in the a
 Run `bin/magento setup:install` to initalize database and environment configuration. Change `DOCKER_IP` environment variable to point to the IP address where docker is running. 
 
 ```
+export DOCKER_IP=127.0.0.1
 php -d memory_limit=-1 bin/magento setup:install \
-  --amqp-host 127.0.0.1 \
+  --amqp-host $DOCKER_IP \
   --amqp-port 5672 \
   --amqp-user guest \
   --amqp-password guest \
@@ -67,12 +68,12 @@ php -d memory_limit=-1 bin/magento setup:install \
   --admin-firstname John \
   --admin-lastname Doe \
   --admin-email admin@magento.com \
-  --db-host 127.0.0.1 \
+  --db-host $DOCKER_IP \
   --db-name magento \
   --db-user root \
   --db-password magento \
   --session-save db \
-  --base-url http://127.0.0.1:8082/ \
+  --base-url http://$DOCKER_IP:8082/ \
   --backend-frontname admin
 ```
 
@@ -129,7 +130,7 @@ php -S 127.0.0.1:8082 -d always_populate_raw_post_data=-1  -t ./pub/ ./phpserver
 
 ## Access website
 
-You local website URL depends on the URL used during installation, by default your magento website will be available at [http://localhost:8082/index.php](http://localhost:8082/index.php).
+You local website URL depends on the URL used during installation, by default your magento website will be available at [http://127.0.0.1:8082/index.php](http://127.0.0.1:8082/index.php).
 
 If the CSS and JS are not loaded correctly, you need to add the following configuration into the database :
 ```
@@ -138,7 +139,7 @@ INSERT INTO core_config_data (`path`, `value`) VALUES ('dev/static/sign', '0');
 
 #### Default Backoffice username and password
 
-- URL: [http://localhost:8082/index.php/admin](http://localhost:8082/index.php/admin)
+- URL: [http://127.0.0.1:8082/index.php/admin](http://127.0.0.1:8082/index.php/admin)
 - Username: admin
 - Password: admin123
 
