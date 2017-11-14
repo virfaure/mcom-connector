@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ ! -f auth.json ]; then
+    echo "File auth.json not found. Please create the file with your Magento credentials to install Magento EE"
+fi
+
 if [ -z "$1" ]
   then
     echo "No version supplied, using latest Magento version"
@@ -12,7 +16,7 @@ fi
 mv magento-ee/* . && rm -rf magento-ee
 mkdir -p app/code/Magento
 
-git clone git@github.com:magento-mcom/module-aqmp-message-bus.git app/code/Magento/AmqpMessageBus
+git clone git@github.com:magento-mcom/module-amqp-message-bus.git app/code/Magento/AmqpMessageBus
 git clone git@github.com:magento-mcom/module-catalog-message-bus.git app/code/Magento/CatalogMessageBus
 git clone git@github.com:magento-mcom/module-common-message-bus.git app/code/Magento/CommonMessageBus
 git clone git@github.com:magento-mcom/module-inventory-message-bus.git app/code/Magento/InventoryMessageBus
